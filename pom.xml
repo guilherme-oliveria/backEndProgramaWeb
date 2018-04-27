@@ -27,11 +27,11 @@
 	<dependencies>
 
 		<!-- Flyway -->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 			<version>4.0.3</version>
-		</dependency>
+		</dependency>-->
 		<!-- end Flyway -->
 
 		<!-- SPRING BOOT -->

@@ -1,20 +1,31 @@
 package br.edu.unievangelica.domain.category;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "Categoria")
-@JsonIgnoreProperties
+@Table(name = "category")
 public class Category implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private static final long serialversionUID = 1L;
-
-    @Id@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_seq")
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_seq")
+    @SequenceGenerator(name = "category_id_seq", sequenceName = "category_id_seq", allocationSize = 1)
+    @Column(name = "id")
+    @Getter
     private long id;
 
+    @NotEmpty
+    @Size(max = 50)
+    @Column(name = "nome")
     private String nome;
+
 
 }
