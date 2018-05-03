@@ -1,10 +1,12 @@
 package br.edu.unievangelica.domain.category;
 
+import br.edu.unievangelica.domain.Produto;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -27,5 +29,7 @@ public class Category implements Serializable {
     @Column(name = "nome")
     private String nome;
 
-
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "produto_id",  referencedColumnName = "id")
+    private Produto produto;
 }
