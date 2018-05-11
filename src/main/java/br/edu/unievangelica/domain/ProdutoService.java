@@ -23,10 +23,7 @@ public class ProdutoService extends AbstractService<Produto>{
         return produtoRepository.save(produto);
     }
 
-    @Override
-    public List<Produto> findAll() {
-        return super.findAll();
-    }
+    
 
     public Produto update(Long id, Produto produto) {
         Produto produtoDB = Optional.ofNullable(produtoRepository.findOne(id))

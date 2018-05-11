@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @Service
-public class CategoryService extends AbstractService<Category> {
+public class CategoryService {
 
     @Autowired
     public CategoryRepository categoryRepository;
@@ -20,13 +20,20 @@ public class CategoryService extends AbstractService<Category> {
         return true;
     }
 
-    public Category save(Category category) {
-        return categoryRepository.save(category);
+    public List<Category> findAll(){
+
+        return categoryRepository.findAll();
+
     }
 
-    @Override
-    public List<Category> findAll() {
-        return super.findAll();
+    public Category findOne(long id){
+        return categoryRepository.findOne(id);
+    }
+
+
+
+    public Category save(Category category) {
+        return categoryRepository.save(category);
     }
 
     public Category update(Long id, Category category) {

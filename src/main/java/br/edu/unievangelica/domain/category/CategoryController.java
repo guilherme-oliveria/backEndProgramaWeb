@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryController extends ResponseAbstractController {
@@ -15,7 +17,10 @@ public class CategoryController extends ResponseAbstractController {
 
     @GetMapping
     public ResponseEntity<?> findAll() {
-        return jsonResponse(categoryService.findAll());
+        List<Category> list = categoryService.findAll();
+        System.out.println("Size =: " + list.size());
+        //return jsonResponse(list);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
 
