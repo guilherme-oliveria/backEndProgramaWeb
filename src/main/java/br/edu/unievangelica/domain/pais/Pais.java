@@ -38,8 +38,8 @@ public class Pais implements Serializable {
     @Setter
     private String sigla;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pais")
-    @Getter
-    @Setter
-    private List<Provincia> provincias;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "pais")
+//    @Getter
+//    @Setter
+//    private List<Provincia> provincias;
 }

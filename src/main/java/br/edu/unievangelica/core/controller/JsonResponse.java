@@ -26,6 +26,4 @@ public class JsonResponse {
     }
 
 
-    public void setContent(Object content) {
-    }
 }

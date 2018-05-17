@@ -17,7 +17,6 @@ public class PaisController extends ResponseAbstractController {
     public ResponseEntity<?> findAll() {
         return jsonResponse(paisService.listarPorOrdemAlfabetica());
     }
-
 //    @GetMapping(value = "/{id}")
 //    public ResponseEntity<?> findById(@PathVariable long id) {
 //        return jsonResponse(paisService.findOne(id));
@@ -29,7 +28,7 @@ public class PaisController extends ResponseAbstractController {
 //    }
 //
 //    @PutMapping
-//    public ResponseEntity<?> update(@Validated @RequestBody Pais pais) {
+//    public ResponseEntity<?> update(@Validated @RequestBody    Pais pais) {
 //        return jsonResponse(paisService.save(pais));
 //    }
 //

@@ -1,6 +1,7 @@
 package br.edu.unievangelica.domain.category;
 
-import br.edu.unievangelica.domain.Produto;
+import br.edu.unievangelica.domain.product.Produto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -8,28 +9,26 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
+import java.util.List;
 
-@Getter
-@Setter
+@Getter //Gera todos os GET's
+@Setter //Gera todos os SET's
 @Entity
-@Table(name = "category")
-public class Category implements Serializable {
-    private static final long serialVersionUID = 1L;
+@Table(name = "category") //para adicionar nome da tabela diferente da classe
+public class    Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_id_seq")
     @SequenceGenerator(name = "category_id_seq", sequenceName = "category_id_seq", allocationSize = 1)
     @Column(name = "id")
-    @Getter
     private long id;
 
-    @NotEmpty
-    @Size(max = 50)
-    @Column(name = "nome")
+    @NotNull //validar campos NULL
+    @NotEmpty //validar strings vazias
+    @Size(max = 50) //pode adicionar max e min exem: (max = 50, min = 10)
     private String nome;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "produto_id",  referencedColumnName = "id")
-    private Produto produto;
+    @JsonIgnore
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<Produto> produtos;
 }
