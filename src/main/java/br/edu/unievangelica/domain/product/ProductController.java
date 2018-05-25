@@ -2,6 +2,7 @@ package br.edu.unievangelica.domain.product;
 
 import br.edu.unievangelica.core.controller.ResponseAbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -28,10 +29,11 @@ public class ProductController extends ResponseAbstractController{
         return jsonResponse(productService.save(produto));
     }
 
-    @PutMapping
-    public ResponseEntity<?> update(@Validated @RequestBody Produto produto){
-        return jsonResponse(productService.save(produto));
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable long id, @RequestBody Produto produto) {
+        return new ResponseEntity<>(productService.update(id, produto), HttpStatus.OK);
     }
+
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<?> delete(@PathVariable long id){
