@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/produto")
 public class ProductController extends ResponseAbstractController{
@@ -17,6 +19,11 @@ public class ProductController extends ResponseAbstractController{
     @GetMapping
     public ResponseEntity<?> findAll() {
         return jsonResponse(productService.listarPorOrdemAlfabetica());
+    }
+
+    @GetMapping(value = "/promocao")
+    public ResponseEntity<List<Produto>> allProdutos() {
+        return (ResponseEntity<List<Produto>>) jsonResponse(productService.listarPromocoes());
     }
 
     @GetMapping(value = "/{id}")

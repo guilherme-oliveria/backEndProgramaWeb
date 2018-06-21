@@ -18,6 +18,10 @@ public class ProductService extends AbstractService<Produto> {
         return produtoRepository.findAllByOrderByNomeAsc();
     }
 
+    public List<Produto> listarPromocoes(){
+        return  produtoRepository.findProdutoByAtivarPromocaoTrue();
+    }
+
     public boolean delete(long id) {
         produtoRepository.delete(id);
         return true;
