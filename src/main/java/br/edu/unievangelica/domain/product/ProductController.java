@@ -26,6 +26,12 @@ public class ProductController extends ResponseAbstractController{
         return (ResponseEntity<List<Produto>>) jsonResponse(productService.listarPromocoes());
     }
 
+    @GetMapping(value = "/semPromocao")
+    public ResponseEntity<List<Produto>> semPromoProdutos() {
+        return (ResponseEntity<List<Produto>>) jsonResponse(productService.listarProdutosSemPromo());
+    }
+
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
         return jsonResponse(productService.findOne(id));

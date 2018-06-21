@@ -15,9 +15,9 @@ import javax.validation.constraints.Size;
 @Table(name = "produto")
 public class Produto {
     @Transient
-    private int SIM =1;
+    public static final Integer SIM =1;
     @Transient
-    private int NAO =0;
+    public static final Integer NAO =0;
 
 
     @Id

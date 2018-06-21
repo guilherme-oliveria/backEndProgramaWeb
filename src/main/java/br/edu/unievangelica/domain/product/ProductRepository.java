@@ -10,4 +10,6 @@ public interface ProductRepository extends JpaRepository<Produto, Long> {
     List<Produto> findAllByOrderByNomeAsc();
 
     List<Produto> findProdutoByAtivarPromocaoTrue();
+
+    List<Produto> findProdutoByAtivarPromocaoFalse();
 }

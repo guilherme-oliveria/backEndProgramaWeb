@@ -22,6 +22,11 @@ public class ProductService extends AbstractService<Produto> {
         return  produtoRepository.findProdutoByAtivarPromocaoTrue();
     }
 
+    public List<Produto> listarProdutosSemPromo(){
+        return  produtoRepository.findProdutoByAtivarPromocaoFalse();
+    }
+
+
     public boolean delete(long id) {
         produtoRepository.delete(id);
         return true;
